@@ -1,0 +1,26 @@
+<h1>Listing asset_lists</h1>
+
+<table id="asstb">
+  <tr>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Time</th>
+    <th>Owner</th>
+  </tr>
+
+<% @asset_lists.each do |asset_list| %>
+  <tr>
+    <td><%= asset_list.name %></td>
+    <td><%= asset_list.location %></td>
+    <td><%= asset_list.time.strftime("%Y") %></td>
+    <td><%= asset_list.member.name %></td>
+    <td><%= link_to 'Show', asset_list %></td>
+    <td><%= link_to 'Edit', edit_asset_list_path(asset_list) %></td>
+    <td><%= link_to 'Destroy', asset_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Asset list', new_asset_list_path %>

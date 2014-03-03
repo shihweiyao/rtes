@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  	<p>您好!</p>
+	<p>這裡是「」平台系統，會員邀請通知，請點選以下連結進行，會員認證和基本資料填寫。</p>
+  	<%=link_to host+"/members/verifyCode?verification_code="+@verification_code+"&id="+@id.to_s, host+"/members/verifyCode?verification_code="+@verification_code+"&id="+@id.to_s%>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<%= form_for(@member) do |f| %>
+  <% if @member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@member.errors.count, "error") %> prohibited this member from being saved:</h2>
+      <ul>
+      <% @member.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%if !@member.verified%>
+  <div class="field">
+    <%= f.label '帳號' %><br />
+    <%= f.text_field :username %>
+  </div>
+<%else%>
+   <%= f.label '帳號' %><br />
+   <h2><%=@member.username%></h2>
+<%end%>  
+  <div class="field">
+    <%=f.label '密碼'%><br />
+    <%=f.password_field :pw,:size=>40 %>
+  </div>  
+  <div class="field">
+    <%=f.label '密碼確認'%><br />
+    <%=f.password_field :pw_confirmation,:size=>40 %>
+  </div>  
+  <div class="field">
+    <%= f.label '姓名' %><br />
+    <%= f.text_field :name %>
+  </div> 
+  <div class="field">
+    <%= f.label '聯絡電話' %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit "送出" %>
+  </div>
+<% end %>

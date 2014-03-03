@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<h1>編輯我的帳號</h1>
+<br>
+<div class="menu_border_blue">
+<span id="my_button"><%= link_to '編輯', edit_member_path(@member) %></span>
+</div>
+<p>
+  <b>姓名:</b>
+  <%= @member.name %>
+</p>
+
+<p>
+  <b>帳號:</b>
+  <%= @member.username %>
+</p>
+
+<p>
+  <b>聯絡電話:</b>
+  <%= @member.phone %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @member.email %>
+</p>

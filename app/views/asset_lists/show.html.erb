@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @asset_list.name %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @asset_list.location %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @asset_list.time %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%= @asset_list.member.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_asset_list_path(@asset_list) %> |
+<%= link_to 'Back', asset_lists_path %>

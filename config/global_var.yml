@@ -1,0 +1,14 @@
+defaults: &defaults
+  read_permission: 1
+  update_permission: 2    
+  create_permission: 4 
+  delete_permission: 8 
+
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+test:
+  <<: *defaults

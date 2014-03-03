@@ -1,0 +1,27 @@
+<h1>權限設定</h1>
+<br>
+<div class="field">
+  	姓名:
+  	<%= @permission_config.member.name %>
+</div>
+<%=form_tag do%>
+		<table border="1">		
+		<tr>	
+			<td>帳號管理:</td>
+			<td>觀看全部</td><td><%=check_box_tag :mem_read, GLOBAL_VAR['read_permission'], checkPermission(type: 'member', permission: GLOBAL_VAR['read_permission'], member_id: @permission_config.member.id )%></td>		
+		</tr>
+		<tr>	
+			<td></td><td>編輯全部</td><td><%=check_box_tag :mem_update, GLOBAL_VAR['update_permission'], checkPermission(type: 'member', permission: GLOBAL_VAR['read_permission'], member_id: @permission_config.member.id )%></td>
+        </tr>       
+		<tr>	
+			<td></td><td>新增</td><td><%=check_box_tag :mem_create, GLOBAL_VAR['create_permission'], checkPermission(type: 'member', permission: GLOBAL_VAR['create_permission'], member_id: @permission_config.member.id )%></td>	
+		</tr>
+		<tr>	
+			<td></td><td>刪除</td><td><%=check_box_tag :mem_delete, GLOBAL_VAR['delete_permission'], checkPermission(type: 'member', permission: GLOBAL_VAR['delete_permission'], member_id: @permission_config.member.id )%></td>		
+		</tr>	
+		</table>	
+  	<%= hidden_field  :permission_config, :id, :value=>@permission_config.id %>
+  	<div class="actions">	
+	<%=submit_tag "送出"%>
+	</div>
+<%end%>

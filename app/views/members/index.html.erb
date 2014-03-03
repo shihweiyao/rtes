@@ -1,0 +1,41 @@
+<div class="menu_border_blue">	
+	<span id="my_button"><%=link_to '編輯我的帳號',{controller: 'members', action: 'show', id: session[:member_id]}%></span> 
+	<%if checkPermission(type: 'member', permission: GLOBAL_VAR['create_permission'] )%>
+	<span id="my_button"><%=link_to '新增帳號',{controller: 'members', action: 'createMember'}%></span>
+	<%end%> 	
+</div>	
+
+<%if checkPermission(type: 'member', permission: GLOBAL_VAR['read_permission'] )%>
+<table border="3" id="members_table">
+  <tr>
+    <th>姓名</th>
+    <th>帳號</th>  
+    <th>聯絡電話</th>
+    <th>Email</th>
+	<th>功能</th>
+  </tr>
+
+<% @members.each do |member| %>
+  <tr>
+    <td><%= member.name %></td>
+    <%if member.verified %>	
+    <td><%= member.username %></td>
+    <td><%= member.phone %></td>  
+    <%else%>
+    <td align="center" colspan="2" style="color: red;">未認証</td>
+    <%end%>
+    
+    <td><%= member.email %></td>
+    <td>
+    <%if checkPermission(type: 'member', permission: GLOBAL_VAR['delete_permission'] )%>	
+    	<%= link_to '刪除', member, method: :delete, data: { confirm: '你確定要刪除 姓名:'+member.name+'?' } %><br>
+    <%end%>	
+	<%if checkPermission(type: 'member', permission: GLOBAL_VAR['update_permission'] )%>    	
+    	<%= link_to '權限設定', {controller: 'members', action: 'permissionConfig', id: member.id } %><br>
+    	<%= link_to '密碼重設', {controller: 'members', action: 'pwReset', id: member.id }, data: { confirm: '你確定重設密碼 姓名:'+member.name+'?' } %><br>        	    	 
+    <%end%>		
+    </td>
+  </tr>
+<% end %>
+</table>
+<%end%> 
