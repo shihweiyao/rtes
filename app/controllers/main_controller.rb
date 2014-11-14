@@ -2,6 +2,11 @@
 class MainController < ApplicationController
 
   def index
-  end     
-
+  end  
+     
+  def self.weeklyMail
+    @members=Member.find(1)   
+            SystemMailer.weeklyReportMailSending(@members).deliver   
+       
+  end
 end

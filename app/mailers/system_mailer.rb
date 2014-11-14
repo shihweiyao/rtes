@@ -13,6 +13,10 @@ class SystemMailer < ActionMailer::Base
     @new_pw=new_pw
     mail( to: member.email , subject:"系統 會員系統 密碼重設")    
   end
+  def weeklyReportMailSending(member)
+      @member=member
+      mail( to: member.email , subject:"Testing")
+  end
 end
 
 

@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class AssetList < ActiveRecord::Base
-  attr_accessible :location, :name, :owner, :time, :member_id
+  attr_accessible :location, :name, :time, :member_id
   belongs_to :member
   
     validates :name , :presence =>{:message => "姓名 不能是空白"} 
